@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "ramayana-hyderabad",
+    "label": "Ramayana (Hindi)",
+    "event_code": "ET00523251",
+    "region_slug": "hyderabad",
+    "slug": "ramayana",
+    "dates": ["20261113", "20261114", "20261115"],
+    "theatres": ["Allu"],
+    "formats": ["dolby cinema 3d"],
+    "times": [],
+    "enabled": true
+  }
+]
