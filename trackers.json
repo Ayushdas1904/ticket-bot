@@ -6,7 +6,7 @@
     "region_slug": "hyderabad",
     "slug": "ramayana",
     "dates": ["20261113", "20261114", "20261115"],
-    "theatres": ["Allu"],
+    "theatres": ["allu cinemas"],
     "formats": ["dolby cinema 3d"],
     "times": [],
     "enabled": true
