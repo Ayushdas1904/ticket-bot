@@ -1,0 +1,60 @@
+name: BMS Ticket Checker
+
+on:
+  schedule:
+    # Every 10 minutes (GitHub may run late). Chat replies come from the relay (relay.py on Vercel).
+    - cron: '3-59/10 * * * *'  # off the :00 peak, when GitHub drops the most scheduled runs
+  workflow_dispatch:  # Manual trigger button; the relay also starts one for a new tracker
+    inputs:
+      only:
+        description: 'Check just this tracker id (empty = all)'
+        required: false
+        default: ''
+
+concurrency:
+  group: bms-checker
+  cancel-in-progress: false
+
+jobs:
+  check-tickets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: '3.14'
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Run checker
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_TO_EMAIL: ${{ secrets.RESEND_TO_EMAIL }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          ONLY_TRACKER: ${{ inputs.only }}
+        run: uv run main.py
+
+      - name: Commit updated state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add bms_state.json meta.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: update tracker state [skip ci]"
+          # the relay may commit chat changes at the same moment; rebase and retry
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash && git push && exit 0
+            sleep $((i * 3))
+          done
+          exit 1
