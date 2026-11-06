@@ -8,6 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
-.env__pycache__/
+.env
+__pycache__/
 .pytest_cache/
 .vercel/
+logs/
