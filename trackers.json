@@ -5,8 +5,34 @@
     "event_code": "ET00439706",
     "region_slug": "hyderabad",
     "slug": "avengers-doomsday",
-    "dates": ["20261217", "20261218", "20261219"],
-    "theatres": ["allu cinemas", "prasads"],
+    "dates": [
+      "20261217",
+      "20261218",
+      "20261219"
+    ],
+    "theatres": [
+      "allu cinemas",
+      "prasads"
+    ],
+    "formats": [],
+    "times": [],
+    "enabled": true
+  },
+  {
+    "id": "dune-part-three-hyderabad",
+    "label": "Dune: Part Three (English)",
+    "event_code": "ET00491771",
+    "region_slug": "hyderabad",
+    "slug": "dune-part-three-english",
+    "dates": [
+      "20261217",
+      "20261218",
+      "20261219"
+    ],
+    "theatres": [
+      "allu cinemas",
+      "prasads"
+    ],
     "formats": [],
     "times": [],
     "enabled": true
