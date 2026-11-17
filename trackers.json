@@ -14,7 +14,10 @@
       "allu cinemas",
       "prasads"
     ],
-    "formats": [],
+    "formats": [
+      "dolby cinema 3d",
+      "pcx"
+    ],
     "times": [],
     "enabled": true
   },
@@ -33,7 +36,10 @@
       "allu cinemas",
       "prasads"
     ],
-    "formats": [],
+    "formats": [
+      "dolby cinema 3d",
+      "pcx"
+    ],
     "times": [],
     "enabled": true
   }
