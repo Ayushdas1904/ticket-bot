@@ -1,13 +1,13 @@
 [
   {
-    "id": "ramayana-hyderabad",
-    "label": "Ramayana (Hindi)",
-    "event_code": "ET00523251",
+    "id": "avengers-doomsday-hyderabad",
+    "label": "Avengers: Doomsday",
+    "event_code": "ET00439706",
     "region_slug": "hyderabad",
-    "slug": "ramayana",
-    "dates": ["20261113", "20261114", "20261115"],
-    "theatres": ["allu cinemas"],
-    "formats": ["dolby cinema 3d"],
+    "slug": "avengers-doomsday",
+    "dates": ["20261217", "20261218", "20261219"],
+    "theatres": ["allu cinemas", "prasads"],
+    "formats": [],
     "times": [],
     "enabled": true
   }
